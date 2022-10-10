@@ -4,7 +4,7 @@
 void CreateList(ListType *L)
 {
     L -> last = -1;
-    printf("success!\n");
+    printf("Success!\n");
 }
 
 int Insert(ListType *L, ItemType I)

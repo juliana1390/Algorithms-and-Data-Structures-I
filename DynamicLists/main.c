@@ -1,5 +1,6 @@
 #include<stdio.h>
-#include "StaticList.h"
+#include<stdlib.h>
+#include "DynamicList.h"
 
 int main(void)
 {
@@ -28,21 +29,36 @@ int main(void)
     Insert(&L, item);
 
     PrintList(&L);
-
-    printf("Has the element be found? Where? %d\n", Search(&L, 3));
-    printf("Has the element be found? Where? %d\n", Search(&L, 450));
+    printf("\n");
 
     Remove(&L, 5);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
+
     Remove(&L, -3);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
+
     Remove(&L, 3);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
+
     Remove(&L, 450);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
 
-    printf("Has the element be found? Where? %d\n", Search(&L, 3));
-    printf("Has the element be found? Where? %d\n", Search(&L, 450));
-
+    P = L.first;
+    while (P != NULL)
+    {
+        L.first = P -> next;
+        printf("Cleaning...\n");
+        free(P);
+        P = L.first;
+    }
+    
     return 0;
 }
