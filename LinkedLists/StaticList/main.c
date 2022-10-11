@@ -32,6 +32,7 @@ int main(void)
     printf("Has the element be found? Where? %d\n", Search(&L, 3));
     printf("Has the element be found? Where? %d\n", Search(&L, 450));
 
+    printf("\n");
     Remove(&L, 5);
     PrintList(&L);
     Remove(&L, -3);

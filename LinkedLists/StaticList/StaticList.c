@@ -24,7 +24,7 @@ int Remove(ListType *L, KeyType K)
     RemovePosition(L, Search(L, K));
 }
 
-static RemovePosition(ListType *L, PointerType P)
+static int RemovePosition(ListType *L, PointerType P)
 {
     PointerType a;
 
@@ -64,7 +64,7 @@ char EmptyList(ListType *L)
 
 char FullList(ListType *L)
 {
-    return L -> last == MAXSIZE -1;
+    return L -> last == MAXSIZE - 1;
 }
 
 void PrintList(ListType *L)
