@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "staticlist.h": "c"
+        "staticlist.h": "c",
+        "staticstack.h": "c"
     }
 }
