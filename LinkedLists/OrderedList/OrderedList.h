@@ -1,5 +1,5 @@
-#ifndef DYNAMICLIST_H
-#define DYNAMICLIST_H
+#ifndef ORDEREDLIST_H
+#define ORDEREDLIST_H
 
 #define NO_ERROR 0
 #define INVALID_POS -1
@@ -18,7 +18,7 @@ typedef struct NodeType *PointerType;
 typedef struct NodeType
 {
     ItemType item;
-    struct NodeType *next;   
+    struct NodeType *next; 
 } NodeType;
 
 typedef struct

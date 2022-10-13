@@ -31,22 +31,22 @@ int main(void)
     PrintList(&L);
     printf("\n");
 
-    Remove(&L, 5);
+    Delete(&L, 5);
     printf("\n");
     PrintList(&L);
     printf("\n");
 
-    Remove(&L, -3);
+    Delete(&L, -3);
     printf("\n");
     PrintList(&L);
     printf("\n");
 
-    Remove(&L, 3);
+    Delete(&L, 3);
     printf("\n");
     PrintList(&L);
     printf("\n");
 
-    Remove(&L, 450);
+    Delete(&L, 450);
     printf("\n");
     PrintList(&L);
     printf("\n");
@@ -54,7 +54,7 @@ int main(void)
     P = L.first;
     while (P != NULL)
     {
-        L.first = P -> next;
+        L.first = P->next;
         printf("Cleaning...\n");
         free(P);
         P = L.first;

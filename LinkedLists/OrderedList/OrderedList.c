@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "DynamicList.h"
+#include "OrderedList.h"
 
 void CreateList(ListType *L)
 {
@@ -21,18 +21,32 @@ int Insert(ListType *L, ItemType I)
     }
 
     P->item = I;
-    P->next = NULL;
 
-    if (EmptyList(L))
+    if(EmptyList(L))
     {
         L->first = P;
         L->last = P;
+        P->next = NULL;
     }
-    else
+    else if (L->first->item.key > I.key) // 1st position
     {
-        L->last->next = P;
-        L->last = P;
+        P->next = L->first;
+        L->first = P;
     }
+    else // any other position
+    {
+        PointerType aux;
+        aux = L->first;
+        while (aux->next != NULL && aux->next->item.key < I.key)
+        {
+            aux = aux->next;
+        }
+
+        P->next = aux->next;
+        aux->next = P; 
+    }
+
+    
     
 }
 
@@ -65,7 +79,7 @@ static int DeletePosition(ListType *L, PointerType P)
         return NO_ERROR;
     }
 
-    // Delete from start
+    // deleting from beginning
     if (P == L->first)
     {
         L->first = L->first->next;
@@ -73,7 +87,7 @@ static int DeletePosition(ListType *L, PointerType P)
         return NO_ERROR;
     }
     
-    // Delete from middle
+    // deleting from middle
     PointerType aux = L->first;
     while (aux->next != NULL && aux->next != P)
     {
@@ -82,7 +96,7 @@ static int DeletePosition(ListType *L, PointerType P)
     
     aux->next = P->next;
     
-    // Delete from end
+    // deleting from end
     if (aux->next == NULL)
     {
         L->last = aux;

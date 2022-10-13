@@ -24,8 +24,8 @@ typedef struct
 
 void CreateList(ListType *L);
 int Insert(ListType *L, ItemType I);
-int Remove(ListType *L, KeyType K);
-static int RemovePosition(ListType *L, PointerType P);
+int Delete(ListType *L, KeyType K);
+static int DeletePosition(ListType *L, PointerType P);
 PointerType Search(ListType *L, KeyType K);
 char EmptyList(ListType *L);
 char FullList(ListType *L);

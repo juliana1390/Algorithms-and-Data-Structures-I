@@ -1,7 +1,8 @@
 #include<stdio.h>
-#include "StaticList.h"
+#include<stdlib.h>
+#include "OrderedList.h"
 
-int main(void)
+int main()
 {
     ListType L;
     ItemType item;
@@ -28,22 +29,36 @@ int main(void)
     Insert(&L, item);
 
     PrintList(&L);
-
-    printf("Has the element be found? Where? %d\n", Search(&L, 3));
-    printf("Has the element be found? Where? %d\n", Search(&L, 450));
-
     printf("\n");
+
     Delete(&L, 5);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
+
     Delete(&L, -3);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
+
     Delete(&L, 3);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
+
     Delete(&L, 450);
+    printf("\n");
     PrintList(&L);
+    printf("\n");
 
-    printf("Has the element be found? Where? %d\n", Search(&L, 3));
-    printf("Has the element be found? Where? %d\n", Search(&L, 450));
-
+    P = L.first;
+    while (P != NULL)
+    {
+        L.first = P->next;
+        printf("Cleaning...\n");
+        free(P);
+        P = L.first;
+    }
+    
     return 0;
 }
