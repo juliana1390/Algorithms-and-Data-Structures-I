@@ -112,8 +112,6 @@ char EmptyList(ListType *L)
     return L->last == NULL && L->first == NULL;
 }
 
-//char FullList(ListType *L);
-
 void PrintList(ListType *L)
 {
     PointerType P = L->first;

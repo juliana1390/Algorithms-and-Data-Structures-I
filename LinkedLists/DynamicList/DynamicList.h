@@ -32,7 +32,6 @@ int Delete(ListType *L, KeyType K);
 static int DeletePosition(ListType *L, PointerType P);
 PointerType Search(ListType *L, KeyType K);
 char EmptyList(ListType *L);
-
 void PrintList(ListType *L);
 
 #endif

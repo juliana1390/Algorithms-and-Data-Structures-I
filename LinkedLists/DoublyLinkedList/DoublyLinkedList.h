@@ -1,5 +1,5 @@
-#ifndef ORDEREDLIST_H
-#define ORDEREDLIST_H
+#ifndef DOUBLYLINKEDLIST_H
+#define DOUBLYLINKEDLIST_H
 
 #define NO_ERROR 0
 #define INVALID_POS -1
@@ -18,7 +18,7 @@ typedef struct NodeType *PointerType;
 typedef struct NodeType
 {
     ItemType item;
-    struct NodeType *next; 
+    struct NodeType *next, *previous; 
 } NodeType;
 
 typedef struct
@@ -33,5 +33,6 @@ static int DeletePosition(ListType *L, PointerType P);
 PointerType Search(ListType *L, KeyType K);
 char EmptyList(ListType *L);
 void PrintList(ListType *L);
+void PrintReversedList(ListType *L);
 
 #endif

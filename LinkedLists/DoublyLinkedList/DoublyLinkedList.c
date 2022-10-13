@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "OrderedList.h"
+#include "DoublyLinkedList.h"
 
 void CreateList(ListType *L)
 {
@@ -22,15 +22,18 @@ int Insert(ListType *L, ItemType I)
 
     P->item = I;
 
+    P->previous = NULL;
     if(EmptyList(L))
     {
         L->first = P;
         L->last = P;
         P->next = NULL;
+        
     }
     else if (L->first->item.key > I.key) // 1st position
     {
         P->next = L->first;
+        L->first->previous = P;
         L->first = P;
     }
     else // any other position
@@ -43,10 +46,12 @@ int Insert(ListType *L, ItemType I)
         }
 
         P->next = aux->next;
-        aux->next = P; 
+        P->previous = aux;
+        aux->next = P;
+        if(P->next != NULL) P->next->previous = P; 
     }
 
-    
+    return NO_ERROR;
     
 }
 
@@ -71,7 +76,7 @@ static int DeletePosition(ListType *L, PointerType P)
         return INVALID_POS;
     }
 
-    // the only one
+    // the only one element
     if (P == L->first && P == L->last)
     {
         CreateList(L);
@@ -83,23 +88,28 @@ static int DeletePosition(ListType *L, PointerType P)
     if (P == L->first)
     {
         L->first = L->first->next;
+        L->first->previous = NULL;
         free(P);
         return NO_ERROR;
     }
     
     // deleting from middle
-    PointerType aux = L->first;
+    /*PointerType aux = L->first;
     while (aux->next != NULL && aux->next != P)
     {
         aux  = aux->next;
-    }
+    }*/
     
-    aux->next = P->next;
+    P->previous->next = P->next;
     
     // deleting from end
-    if (aux->next == NULL)
+    if (P == L->last)
     {
-        L->last = aux;
+        L->last = P->previous;
+    }
+    else
+    {
+        P->next->previous = P->previous;
     }
 
     free(P);
@@ -139,6 +149,23 @@ void PrintList(ListType *L)
         }
         else printf("%d: key = %d, next = NULL\n", i, P->item.key);
         P = P->next;
+        i++;
+    }
+}
+
+void PrintReversedList(ListType *L)
+{
+    PointerType P = L->last;
+
+    int i = 0;
+    while (P != NULL)
+    {
+        if (P->previous != NULL)
+        {
+            printf("%d: key = %d, previous = %d\n", i, P->item.key, P->previous->item.key);
+        }
+        else printf("%d: key = %d, previous = NULL\n", i, P->item.key);
+        P = P->previous;
         i++;
     }
 }
