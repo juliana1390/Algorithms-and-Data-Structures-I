@@ -4,7 +4,7 @@ CFLAGS = -Wall
 main: StaticStack.o main.c
 	$(CC) -o main StaticStack.o main.c
 
-StaticList.o: StaticStack.c StaticStack.h
+StaticStack.o: StaticStack.c StaticStack.h
 	$(CC) -c StaticStack.c
 
 clean:

@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "staticlist.h": "c",
-        "staticstack.h": "c"
+        "staticstack.h": "c",
+        "stdio.h": "c"
     }
 }

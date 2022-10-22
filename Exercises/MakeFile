@@ -1,0 +1,14 @@
+CC = gcc
+CFLAGS = -Wall
+
+main: ContactList.o main.c
+	$(CC) -o main ContactList.o main.c
+
+ContactList.o: ContactList.c ContactList.h
+	$(CC) -c ContactList.c
+
+clean:
+	rm main $(objects)
+
+run: main
+    ./main
